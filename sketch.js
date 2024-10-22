@@ -24,7 +24,7 @@ function draw() {
       }
 
       // Calcola l'offset in cui posizionare i quadrati con offset.
-      let xOffset = (r % 2) * (larghezza + vGutter) / 2; // Offset orizzontale per righe pari (r % 2) verifica se il numero di righe è pari e gri attribuisce una determinata posizione sulle ascisse che è sfalzata di metà della larghezza del quadrato ((larghezza + vGutter) / 2).
+      let xOffset = (r % 2) * (larghezza + vGutter) / 2; // Offset orizzontale per righe dispari, se "r" è pari (r % 2)=0 ovvero non ci sarà Offset, in caso contrario si applicherà Offset sulle x sfalzata di metà della larghezza del quadrato ((larghezza + vGutter) / 2).
       let yOffset = r * (larghezza + vGutter / 90); // Offset verticale per ogni riga, è /90 per diminuire la dimensione gutter e così aumentare il numero di righe.
       
       let xPos = i * (larghezza + vGutter) + xOffset; // Posizione dei quadrato sulle ascisse già calcolata con Offset delle righe pari.
