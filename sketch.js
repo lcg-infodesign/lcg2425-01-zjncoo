@@ -11,7 +11,7 @@ function draw() {
 
   let larghezza = 25; // Larghezza base di un quadrato.
   let vGutter = 8; // Gutter tra i quadrati.
-  let minSquareSize = 8; // Dimensione minima dei quadrati a fondo pagina.
+  let minSquareSize = 5; // Dimensione minima dei quadrati a fondo pagina.
 
   let columns = (windowWidth / (larghezza + vGutter)); // Numero di colonne, calcolata dividendo larghezza pagina / su larghezza quadrato + Gutter.
   let rows = (windowHeight / (larghezza + vGutter / 90)); // Numero di righe, calcolate dividendo altezza pagina / su larghezza quadrato = altezza quadrato + Gutter / 90 (90 è stato aggiunto per diminuire il gutter tra righe e di conseguenza aumentare il numero di righe).
