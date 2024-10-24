@@ -18,24 +18,24 @@ function draw() {
 
   for (let r = 0; r < rows; r++) { 
     for (let i = 0; i < columns; i++) {
-      let gridSize = max(larghezza * (1 - r / rows), minSquareSize); // Il calcolo ((1 - r / rows) genera un fattore che diminuisce man mano che ci si sposta verso il basso nella griglia: di conseguenza la larghezza del quadrato diminuisce progressivamente. //Con max, viene garantito che anche quando la formula larghezza * (1 - r / rows) produce un valore molto piccolo, la dimensione del quadrato sarà sempre almeno pari a minSquareSize(8).
+      let gridSize = max(larghezza * (1 - r / rows), minSquareSize); // Il calcolo ((1 - r / rows) genera un fattore che diminuisce man mano che ci si sposta verso il basso nella griglia: di conseguenza la larghezza del quadrato diminuisce progressivamente. //Con max, viene garantito che anche quando la formula larghezza * (1 - r / rows) produce un valore molto piccolo, la dimensione del quadrato sarà sempre almeno pari a minSquareSize(5).
       if (randomizeSizes) { //Se si verifica la condizione randomSizes (ovvero cliccando il tasto "R" avvinene una randomizzazzione delle dimensioni di gridSize, ovvero la larghezza del quadrato che varia nelle varie righe.
         gridSize *= random(0.5, 1); //fattore di moltiplicazione di gridSize da scala 0.5:1 a 1:1.
       }
 
       // Calcola l'offset in cui posizionare i quadrati con offset.
-      let xOffset = (r % 2) * (larghezza + vGutter) / 2; // Offset orizzontale per righe dispari, se "r" è pari (r % 2)=0 ovvero non ci sarà Offset, in caso contrario si applicherà Offset sulle x sfalzata di metà della larghezza del quadrato ((larghezza + vGutter) / 2).
-      let yOffset = r * (larghezza + vGutter / 90); // Offset verticale per ogni riga, è /90 per diminuire la dimensione gutter e così aumentare il numero di righe.
+      let xOffset = (r % 2) * (larghezza + vGutter) / 2; // Offset orizzontale per righe dispari, se "r" è pari (r % 2)=0 ovvero non ci sarà Offset, in caso contrario si applicherà Offset sulle x sfalzata di metà della larghezza del quadrato + vGutter ((larghezza + vGutter) / 2).
+      let yOffset = r * (larghezza + vGutter / 90); // Offset verticale per ogni riga, vGutter è /90 per diminuire la dimensione gutter e così aumentare il numero di righe.
       
-      let xPos = i * (larghezza + vGutter) + xOffset; // Posizione dei quadrato sulle ascisse già calcolata con Offset delle righe pari.
+      let xPos = i * (larghezza + vGutter) + xOffset; // Posizione dei quadrato sulle ascisse già calcolata con Offset delle righe dispari.
       let yPos = yOffset; // Posizione y con Offset delle righe in verticale.
 
       push(); //inizio costruzione quadrati.
       translate(xPos, yPos); //definizione posizione quadrati, richiamando let xPos e yPos. 
       rotate(PI / 4); //rotazione di 45° dei quadrati per dare forma a diamante.
       fill(0); //colore nero diamanti
-      rectMode(CENTER); //Le coordinate specificate rappresentano il centro del rettangolo, e i valori di larghezza e altezza estendono il rettangolo simmetricamente rispetto al centro.
-      rect(0, 0, gridSize, gridSize); // Disegna il quadrato, le coordinate 0, 0 significa che rispetterà la sua translate dal centro del singolo quadrato.
+      rectMode(CENTER); //Le coordinate specificate rappresentano il centro del rettangolo, e i valori di larghezza e altezza estendono il rettangolo simmetricamente rispetto al centro, le posizioni del quadrato saranno quindi 0,0.
+      rect(0, 0, gridSize, gridSize); // Disegna il quadrato, le coordinate 0, 0 significa che rispetterà la sua translate dal centro del singolo quadrato. Metto gridSize al posto di larghezza al fine di poi permettere il random.
       pop();
     }
   }
